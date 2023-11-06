@@ -8,7 +8,7 @@ const PORT = 8080;
 
 const mongoose = require("mongoose");
 const Book = require("./models/book");
-//mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(process.env.DATABASE_URL);
 
 app.get("/", (_, response) => {
     response.json("Testing, Testing, one, two, three");
