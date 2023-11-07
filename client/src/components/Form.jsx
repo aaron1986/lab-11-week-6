@@ -30,7 +30,7 @@ export default function Form({books, setBooks}) {
             <input name="ISBN" placeholder="ISBN" onChange={handleChange} />
             <input name="imgUrl" placeholder="imgUrl" onChange={handleChange} />
             <input name="summary" placeholder="summary" onChange={handleChange} />
-            <button>Add Book</button>
+            <button className="btn-form">Add Book</button>
         </form>
     );
 
