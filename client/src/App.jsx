@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
 import axios from 'axios'
 import './App.css'
+import Form from "./components/Form"
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -16,10 +17,22 @@ function App() {
     setBooks(res.data);
   }
 
+  async function deleteBook(id) {
+    const check = confirm("Are you sure?");
+    if (check) {
+        const API = `http://localhost:8080/books/${id}`;
+        await axios.delete(API);
+        getBooks();
+    } else {
+      alert("That was close!");
+    }
+  }
+
   return (
     <>
       <h1>Books</h1>
       <p>MongoDb Books Database</p>
+
       {books.map((book) => {
         return (
           <div key={book._id}>
@@ -30,9 +43,13 @@ function App() {
             <h2>{book.ISBN}</h2>
             <img src={book.imgUrl}/>
             <h2>{book.summary}</h2>
+
+            {/* delete button */}
+            <button onClick={() => deleteBook(book._id)}>Delete Book</button>
           </div>
         )
       })}
+      <Form books={books} setBooks={setBooks} />
     </>
   )
 }

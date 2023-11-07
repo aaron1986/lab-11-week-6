@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const app = express();
 app.use(cors());
+app.use(express.json());
 const PORT = 8080;
 
 
@@ -18,6 +19,16 @@ app.get("/books", async (request, repsonse) => {
     const books = await Book.find(request.query);
     repsonse.json(books);
 })
+
+app.post("/books", async(request, response) => {
+  const newBook = await Book.create(request.body);
+  response.json(newBook);
+});
+
+app.delete("/books/:id", async (request, response) => {
+  const deleteBook = await Book.findByIdAndDelete(request.params.id);
+  response.json(deleteBook);
+});
 
   //always include this
   app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
