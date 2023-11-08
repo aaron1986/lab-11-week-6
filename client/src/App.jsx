@@ -62,7 +62,7 @@ function App() {
 
     {/* FOOTER */}
     <footer>
-    <p>App Books Example.</p>
+    <p id="p-text">App Books Example.</p>
     </footer>
  </div> {/* container div */}
     </BrowserRouter>
