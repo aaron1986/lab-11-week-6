@@ -13,7 +13,7 @@ export default function Book() {
     }, []);
 
     async function getBook() {
-        const API = `http://localhost:8080/books?_id=${params.id}`;
+        const API = `https://books-app-xs43.onrender.com/books?_id=${params.id}`;
         const res = await axios.get(API);
         setBook(res.data[0]);
     }
