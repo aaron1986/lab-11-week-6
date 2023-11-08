@@ -6,13 +6,13 @@ Neill Edwards
 Vicky Isobel
 Aaron Smith
 
-**Version**: 1.0.5 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.7 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+ This application has the purpose of allowing a user to store a reading list of books. To make use of the list the user needs to be able to access the list of books and access information about individual books. To maintain the list the user needs to be able to edit information about existing books, mark them as read, add new books and remove ones that are no longer wanted. In addition for privacy and to prevent vandalism access should be restricted to authorised users.
 
-    ** To be added **
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ Aaron Smith
 
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-The application has a client-server structure with the client handling the user interface and presention and the server handling the book database and processing queries to it. The code is written in Javacript React within a html framework and CSS styling and is stored in a mono repository on Github with client and server folders. VS Code and Vite are employed for development. The client and server are deployed to the web separate servers, on Vercel and Render respectively.
+The application has a client-server structure with the client handling the user interface and presention and the server handling the book database and processing queries to it. The code is written in Javacript and Node.js within a html framework and CSS styling and is stored in a mono repository on Github with client and server folders. VS Code and Vite are employed for development. The client and server are deployed to the web on separate servers, on Vercel and Render respectively. The book list is implemented in MongoDB, a freely available noSQL database.
 
     	** Libraries to be added **
 
