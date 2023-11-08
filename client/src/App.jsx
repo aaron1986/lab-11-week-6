@@ -2,6 +2,10 @@ import { useState, useEffect} from 'react'
 import axios from 'axios'
 import './App.css'
 import Form from "./components/Form"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Book from "./pages/Book"
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -29,40 +33,39 @@ function App() {
   }
 
   return (
-    <>
+    <BrowserRouter>
     <div className='container'>
 
-      <div className='brand-logo'>
+    <header>
+    <div className='brand-logo'>
       <h1>Books</h1>
       <p>MongoDb Books Database</p>
       </div>
-      <div className='section'>
-        <div className='books'>
-        {books.length > 0 ? (
-  books.map((book) => (
-    <div key={book._id}>
-      <h2 className='book-name'>{book.title}</h2>
-      <h2 className='year'>{book.year}</h2>
-      <h2 className='author'>{book.author}</h2>
-      <h2 className='isbn'>{book.ISBN}</h2>
-      <img src={book.imgUrl} />
-      <h2 className='summary'>{book.summary}</h2>
+    </header>
 
-      {/* delete button */}
-      <button onClick={() => deleteBook(book._id)}>Delete Book</button>
-    </div>
-  ))
-) : (
-  <p>No books available.</p>
-)}
-        </div>{/* end of books div */}
-      </div> {/* end of section div */}
-    </div> {/* end of container */}
-    
-    
-   
-      <Form books={books} setBooks={setBooks} />
-    </>
+    <Routes>
+      <Route 
+      path="/" 
+      element={
+      <Home 
+      books={books} 
+      setBooks={setBooks} 
+      deleteBook={deleteBook} 
+      />
+      }
+      />
+
+      <Route path="/about" element={<About />} />
+      <Route path="/book/:id" element={<Book />} />
+
+    </Routes>
+
+    {/* FOOTER */}
+    <footer>
+    <p>App Books Example.</p>
+    </footer>
+ </div> {/* container div */}
+    </BrowserRouter>
   )
 }
 
