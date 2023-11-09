@@ -37,15 +37,7 @@ function App() {
     <div className='container'>
 
     <header>
-      <div>
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/">Catalog</a></li>
-            <li><a href="/about">About</a></li>
-          </ul>
-        </nav>
-      </div>
+     
     <div className='brand-logo'>
       <h1>Books</h1>
       <p>MongoDb Books Database</p>
