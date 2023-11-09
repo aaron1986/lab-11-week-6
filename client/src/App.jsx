@@ -55,7 +55,7 @@ function App() {
       }
       />
 
-      <Route path="/book/about" element={<About />} />
+      <Route path="/about" element={<About />} />
       <Route path="/book/:id" element={<Book />} />
 
     </Routes>
