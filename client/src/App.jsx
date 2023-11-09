@@ -5,7 +5,7 @@ import Form from "./components/Form"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Book from "./pages/Book"
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -37,6 +37,15 @@ function App() {
     <div className='container'>
 
     <header>
+      <div>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Catalog</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
     <div className='brand-logo'>
       <h1>Books</h1>
       <p>MongoDb Books Database</p>
@@ -55,6 +64,7 @@ function App() {
       }
       />
 
+      {/* <Link to={'./about'}>About</Link> */}
       <Route path="/about" element={<About />} />
       <Route path="/book/:id" element={<Book />} />
 
