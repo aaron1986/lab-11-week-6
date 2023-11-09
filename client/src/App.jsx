@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   async function getBooks() {
-    const API = `http://localhost:8080/books`;
+    const API = `https://books-app-xs43.onrender.com/books`;
     const res = await axios.get(API);
     setBooks(res.data);
   }
@@ -24,7 +24,7 @@ function App() {
   async function deleteBook(id) {
     const check = confirm("Are you sure?");
     if (check) {
-        const API = `http://localhost:8080/books/${id}`;
+        const API = `https://books-app-xs43.onrender.com/books/${id}`;
         await axios.delete(API);
         getBooks();
     } else {
