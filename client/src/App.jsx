@@ -43,10 +43,7 @@ function App() {
         <div id="login-text">
           <LoginButton />
         </div>
-
-<<<<<<< HEAD
      
-
         <Routes>
           <Route
             path="/"
@@ -59,39 +56,7 @@ function App() {
       </div>
       {/* FOOTER */}
       <Footer />
-=======
-    <header>
-     
-    <div className='brand-logo'>
-      <h1>Books</h1>
-      <p>MongoDb Books Database</p>
-      </div>
-    </header>
 
-    <Routes>
-      <Route 
-      path="/" 
-      element={
-      <Home 
-      books={books} 
-      setBooks={setBooks} 
-      deleteBook={deleteBook} 
-      />
-      }
-      />
-
-      {/* <Link to={'./about'}>About</Link> */}
-      <Route path="/about" element={<About />} />
-      <Route path="/book/:id" element={<Book />} />
-
-    </Routes>
-
-    {/* FOOTER */}
-    <footer>
-    <p id="p-text">App Books Example.</p>
-    </footer>
- </div> {/* container div */}
->>>>>>> 06e9df54104869ee0a83c2173212420a68334361
     </BrowserRouter>
   );
 }
