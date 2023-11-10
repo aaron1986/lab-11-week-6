@@ -6,7 +6,7 @@ Neill Edwards
 Vicky Isobel
 Aaron Smith
 
-**Version**: 1.0.7 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.9 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 
@@ -18,19 +18,51 @@ Aaron Smith
 
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
-    ** To be added  **
+	- Set up the Can Of Books project folder.
+	- Create the client folder and app under the Can Of Books folder with npm create vite@latest.
+	- Create a server folder under Can Of Books with a server.js file inside it.
+	- Write this boilerplate code in server.js:
+	
+				const express = require("express");
+				const cors = require("cors");
+				require("dotenv").config();
+				const PORT = process.env.PORT || 8080;
+				const app = express();
+				app.use(cors());
+
+				// add endpoints here
+
+				app.listen(PORT, () => console.log(`App is running PORT ${PORT}`));
+				
+	- Create a package.json file under Can Of Books with npm init -y
+	- Install libraries with npm i express cors dotenv axios mongoose
+	- Use np i react-router-dom to install react router dom
+	- Optionally install nodemon with npi i nodemon
+	- Add .env files to the client and server folders
+	- Add .env to the .gitignore file
+	- Make the project folder a repository with git init
+	- Link the local and remote repos with git remote add origin <project name>
+	- The project is now ready for coding.
+
 
 ## Architecture
 
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-The application has a client-server structure with the client handling the user interface and presention and the server handling the book database and processing queries to it. The code is written in Javacript and Node.js within a html framework and CSS styling and is stored in a mono repository on Github with client and server folders. VS Code and Vite are employed for development. The client and server are deployed to the web on separate servers, on Vercel and Render respectively. The book list is implemented in MongoDB, a freely available noSQL database.
+The application has a client-server structure with the client handling the user interface and presention and the server handling the book database and processing queries to it. The code is written in Javacript and Node.js within a html framework and CSS styling and Express provides a server. The project is stored in a mono repository on Github with client and server folders. VS Code and Vite are employed for development. The client and server are deployed to the web on separate servers, on Vercel and Render respectively. The book list is implemented in MongoDB, a freely available noSQL database.
 
-    	** Libraries to be added **
+    	Code:		Javascript
+    	Libraries:	Node
+    			Express
+    			Cors
+    			Dotenv
+    			React
+    			React-router-dom
+    			Mongoose
+    			 
 
-    	** Page structure to be added **
-
-    	** Architecture diagram to be added? **
+							
+    	
 
 ## Change Log
 
@@ -40,9 +72,12 @@ The application has a client-server structure with the client handling the user 
 06-11-2023 14:30 	Repositories set up with starting templates.
 06-11-2023 15:30 	Schema and model set up and modularised.
 06-11-2023 16:00	Database seeded.
-07-11-2023 14:00  Front end operational
-07-11-2023 16:00  Create, Read and Delete actions operational on localhost
-
+07-11-2023 15:00  	Front end and Read action operational.
+07-11-2023 16:00  	Create function operational on localhost.
+08-11-2023 15:00	Delete function operational on localhost.
+08-11-2023 16:00	Update operational on local server.
+09-11-2023 15:00	All functions operational on web.operational on web.
+10-11-2023 11:00	Authorisation partially working.
 
 
 
@@ -66,7 +101,7 @@ Estimate of time needed to complete: 1 hr
 
 Start time: 15:00	06-11-2023
 
-Finish time: 14:00 07-11-2023
+Finish time: 14:00 	07-11-2023
 
 Actual time needed to complete: 2 hrs
 
@@ -74,11 +109,51 @@ Name of feature: Book Component
 
 Estimate of time needed to complete: 2 hr
 
-Start time: _____
+Start time: 14:00 	07-11-2023
 
-Finish time: _____
+Finish time: 15:00
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
+
+Name of feature: Create Function
+
+Estimate of time needed to complete: 2 hr
+
+Start time: 14:00 	07-11-2023
+
+Finish time: 15:00
+
+Actual time needed to complete: 1 hr
+
+Name of feature:  Delete Function
+
+Estimate of time needed to complete: 2 hr
+
+Start time: 14:00 	08-11-2023
+
+Finish time: 15:00	
+
+Actual time needed to complete: 1 hr
+
+Name of feature:  Update Function
+
+Estimate of time needed to complete: 2 hr
+
+Start time: 15:00 	08-11-2023
+
+Finish time: 16:00	
+
+Actual time needed to complete: 1 hr
+
+Name of feature:  Authentication
+
+Estimate of time needed to complete: 2 hr
+
+Start time: 15:00 	09-11-2023
+
+Finish time: 11:00	10-11-2023 Partially working	
+
+Actual time needed to complete: 
 
 
 
@@ -88,7 +163,7 @@ Logistical:
 
 What hours will you be available to communicate?
 
-	** To be added **
+9:00 to 20:00  
 
 What platform will you use to communicate?
 
