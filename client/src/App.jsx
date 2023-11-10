@@ -1,57 +1,64 @@
-import { useState, useEffect} from 'react'
-import axios from 'axios'
-import './App.css'
-import Form from "./components/Form"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Form from './components/Form';
+import Home from './pages/Home';
+import About from './pages/About';
+import Book from './pages/Book';
+import Header from './components/Header';
+import LoginButton from './components/LoginButton';
+import Footer from './components/Footer';
+import Catalog from './pages/Catalog';
 
 function App() {
   const [books, setBooks] = useState([]);
 
-  //useEffect
-  useEffect(()=>{
+  // useEffect
+  useEffect(() => {
     getBooks();
   }, []);
 
   async function getBooks() {
-    const API = `http://localhost:8080/books`;
+    const API = `https://books-app-xs43.onrender.com/books`;
     const res = await axios.get(API);
     setBooks(res.data);
   }
 
   async function deleteBook(id) {
-    const check = confirm("Are you sure?");
+    const check = window.confirm('Are you sure?');
     if (check) {
-        const API = `http://localhost:8080/books/${id}`;
-        await axios.delete(API);
-        getBooks();
+      const API = `https://books-app-xs43.onrender.com/books/${id}`;
+      await axios.delete(API);
+      getBooks();
     } else {
-      alert("That was close!");
+      alert('That was close!');
     }
   }
 
   return (
-    <>
-      <h1>Books</h1>
-      <p>MongoDb Books Database</p>
+    <BrowserRouter>
+      <div className="container">
+        <Header />
+        <div id="login-text">
+          <LoginButton />
+        </div>
+     
+        <Routes>
+          <Route
+            path="/"
+            element={<Home books={books} setBooks={setBooks} deleteBook={deleteBook} />}
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/book/:id" element={<Book />} />
+        </Routes>
+      </div>
+      {/* FOOTER */}
+      <Footer />
 
-      {books.map((book) => {
-        return (
-          <div key={book._id}>
-
-            <h2>{book.title}</h2>
-            <h2>{book.year}</h2>
-            <h2>{book.author}</h2>
-            <h2>{book.ISBN}</h2>
-            <img src={book.imgUrl}/>
-            <h2>{book.summary}</h2>
-
-            {/* delete button */}
-            <button onClick={() => deleteBook(book._id)}>Delete Book</button>
-          </div>
-        )
-      })}
-      <Form books={books} setBooks={setBooks} />
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
