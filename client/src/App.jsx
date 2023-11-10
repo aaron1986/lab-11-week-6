@@ -1,17 +1,21 @@
-import { useState, useEffect} from 'react'
-import axios from 'axios'
-import './App.css'
-import Form from "./components/Form"
-import Home from "./pages/Home"
-import About from "./pages/About"
-import Book from "./pages/Book"
-import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Form from './components/Form';
+import Home from './pages/Home';
+import About from './pages/About';
+import Book from './pages/Book';
+import Header from './components/Header';
+import LoginButton from './components/LoginButton';
+import Footer from './components/Footer';
+import Catalog from './pages/Catalog';
 
 function App() {
   const [books, setBooks] = useState([]);
 
-  //useEffect
-  useEffect(()=>{
+  // useEffect
+  useEffect(() => {
     getBooks();
   }, []);
 
@@ -22,61 +26,40 @@ function App() {
   }
 
   async function deleteBook(id) {
-    const check = confirm("Are you sure?");
+    const check = window.confirm('Are you sure?');
     if (check) {
-        const API = `https://books-app-xs43.onrender.com/books/${id}`;
-        await axios.delete(API);
-        getBooks();
+      const API = `https://books-app-xs43.onrender.com/books/${id}`;
+      await axios.delete(API);
+      getBooks();
     } else {
-      alert("That was close!");
+      alert('That was close!');
     }
   }
 
   return (
     <BrowserRouter>
-    <div className='container'>
+      <div className="container">
+        <Header />
+        <div id="login-text">
+          <LoginButton />
+        </div>
 
-    <header>
-      <div>
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/">Catalog</a></li>
-            <li><a href="/about">About</a></li>
-          </ul>
-        </nav>
+     
+
+        <Routes>
+          <Route
+            path="/"
+            element={<Home books={books} setBooks={setBooks} deleteBook={deleteBook} />}
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/book/:id" element={<Book />} />
+        </Routes>
       </div>
-    <div className='brand-logo'>
-      <h1>Books</h1>
-      <p>MongoDb Books Database</p>
-      </div>
-    </header>
-
-    <Routes>
-      <Route 
-      path="/" 
-      element={
-      <Home 
-      books={books} 
-      setBooks={setBooks} 
-      deleteBook={deleteBook} 
-      />
-      }
-      />
-
-      {/* <Link to={'./about'}>About</Link> */}
-      <Route path="/about" element={<About />} />
-      <Route path="/book/:id" element={<Book />} />
-
-    </Routes>
-
-    {/* FOOTER */}
-    <footer>
-    <p id="p-text">App Books Example.</p>
-    </footer>
- </div> {/* container div */}
+      {/* FOOTER */}
+      <Footer />
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
